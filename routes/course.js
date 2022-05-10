@@ -63,11 +63,12 @@ router.post(
 
 router.get("/all", async (req, res) => {
   try {
-    const getCourses = courseApi.getCourses( {}, (error, data) => {
+    const getCourses = courseApi.getCourses( {more: null} , (error, data) => {
       if (error) {
         res.status(409).json(error.response.text);
       }
-      res.status(200).json({ data: data.courses });
+
+      res.status(200).json({ data: data });
     });
   } catch (error) {
     console.log(error);

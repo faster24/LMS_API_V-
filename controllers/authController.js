@@ -1,20 +1,12 @@
 const router = require("express").Router();
 const User = require("../models/User");
 const CryptoJS = require("crypto-js");
-const { body, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 
 
 
 const register = async ( req  , res ) => {
     const user = req.body;
-
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({
-        errors: errors.array(),
-      });
-    }
 
     //to create admin account 
     if( user.email === 'admin@gmail.com')
