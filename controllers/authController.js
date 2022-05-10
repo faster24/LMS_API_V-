@@ -3,8 +3,6 @@ const User = require("../models/User");
 const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
 
-
-
 const register = async ( req  , res ) => {
     const user = req.body;
 
@@ -27,7 +25,7 @@ const register = async ( req  , res ) => {
         const savedUser = await newUser.save();
         res.status(200).json({ message: "Account has successfully created!" });
       } catch (error) {
-        res.status(500).json(error);
+        res.json(error);
       }
     }
     else
